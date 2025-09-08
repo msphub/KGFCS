@@ -14,7 +14,7 @@
       background:#0a0e2a;
       color:#f5f5f5;
       scroll-behavior:smooth;
-      padding-top: 70px; /* Prevent overlap with fixed header */
+      padding-top: 70px;
     }
     
     header {
@@ -64,6 +64,7 @@
     section.visible {opacity:1; transform:translateY(0);}
 
     h1,h2 {color:#f1c76d; margin-bottom:15px;}
+    h3 {color:#fff; margin:30px 0 15px;}
     p {max-width:700px; margin:10px auto; line-height:1.6;}
 
     #home {
@@ -89,13 +90,12 @@
       z-index: 2;
     }
     #home h1 {
-      font-size: 3rem; /* Increased size for welcome text */
+      font-size: 3rem;
       overflow: hidden;
       white-space: nowrap;
       border-right: 3px solid #f1c76d;
       width: 0;
       animation: typing 3s steps(30, end) forwards, blink 0.7s step-end 4;
-      animation-fill-mode: forwards;
       position: relative;
       z-index: 2;
     }
@@ -120,32 +120,52 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    section:target {
-      animation: sectionFocus 1s ease;
-    }
-    @keyframes sectionFocus {
-      0%   { transform: scale(0.98); }
-      50%  { transform: scale(1.02); }
-      100% { transform: scale(1); }
-    }
-
     .menu-grid {
       display:grid; 
       grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); 
       gap:20px; 
-      margin-top:30px; 
+      margin-top:10px; 
       width:100%; 
       max-width:900px;
     }
     .card {
       background:#1a1f3a; 
       color:#f5f5f5; 
-      padding:20px; 
+      padding:15px; 
       border-radius:12px; 
       box-shadow:0 4px 8px rgba(0,0,0,0.3); 
       transition:transform 0.3s;
     }
     .card:hover {transform:translateY(-6px);}
+
+    /* Signature Biryani highlight with glow */
+    .signature {
+      border: 2px solid gold;
+      background: #2a2342;
+      position: relative;
+      box-shadow: 0 0 12px rgba(255,215,0,0.4), 
+                  0 0 25px rgba(255,215,0,0.2); /* glowing effect */
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .signature p {
+      padding-top: 30px; /* Fix overlap issue */
+    }
+    .signature .badge {
+      background: gold;
+      color: #111;
+      font-size: 0.8rem;
+      font-weight: bold;
+      padding: 4px 8px;
+      border-radius: 8px;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+    .signature:hover {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 0 18px rgba(255,215,0,0.6),
+                  0 0 35px rgba(255,215,0,0.3); /* stronger glow on hover */
+    }
 
     .btn-whatsapp {
       background:#25D366; 
@@ -159,6 +179,19 @@
       transition:background 0.3s;
     }
     .btn-whatsapp:hover {background:#1ebe5d;}
+
+    .btn-map {
+      background:#f1c76d;
+      color:#111;
+      padding:12px 20px;
+      border-radius:50px;
+      text-decoration:none;
+      font-weight:600;
+      display:inline-block;
+      margin-top:15px;
+      transition:background 0.3s, color 0.3s;
+    }
+    .btn-map:hover {background:#fff; color:#111;}
 
     footer {
       background:#111; 
@@ -179,10 +212,7 @@
       font-size:1.6rem;
       transition:color 0.3s, transform 0.3s;
     }
-    footer .socials a:hover {
-      color:#fff;
-      transform:scale(1.2);
-    }
+    footer .socials a:hover {color:#fff; transform:scale(1.2);}
   </style>
 </head>
 <body>
@@ -204,34 +234,93 @@
     <p>Authentic Telangana flavors served with love. Experience rich traditions and bold tastes in every bite.</p>
   </section>
 
+  <!-- Full Menu -->
   <section id="menu">
     <h2>Our Menu</h2>
+    
+    <h3>Veg Starters</h3>
     <div class="menu-grid">
-      <div class="card"><h3>Biryani</h3><p>Authentic spicy Telangana style biryani.</p></div>
-      <div class="card"><h3>Curries</h3><p>Rich and flavorful curries made fresh daily.</p></div>
-      <div class="card"><h3>Snacks</h3><p>Crispy treats with a local twist.</p></div>
-      <div class="card"><h3>Desserts</h3><p>Traditional sweets to complete your meal.</p></div>
+      <div class="card"><p>Chilli Paneer</p></div>
+      <div class="card"><p>Paneer Manchurian</p></div>
+    </div>
+
+    <h3>Non-Veg Starters</h3>
+    <div class="menu-grid">
+      <div class="card"><p>Ginger Chicken Dry</p></div>
+      <div class="card"><p>Chicken 65</p></div>
+    </div>
+
+    <h3>Biryanis</h3>
+    <div class="menu-grid">
+      <div class="card"><p>Chicken Biryani Family Pack</p></div>
+      <div class="card"><p>Mutton Biryani Family Pack</p></div>
+      <div class="card"><p>Paneer Biryani</p></div>
+      <div class="card"><p>Chicken Biryani</p></div>
+      <div class="card"><p>Mutton Biryani</p></div>
+      <div class="card signature">
+        <p>✨ Nalli Gosht Biryani</p>
+        <span class="badge">Kanha’s Signature</span>
+      </div>
+    </div>
+
+    <h3>Curries</h3>
+    <div class="menu-grid">
+      <div class="card"><p>Paneer Curry</p></div>
+      <div class="card"><p>Chicken Curry</p></div>
+      <div class="card"><p>Mutton Curry</p></div>
+    </div>
+
+    <h3>Meals (Bagara Rice Combos)</h3>
+    <div class="menu-grid">
+      <div class="card"><p>Bagara Rice with Paneer</p></div>
+      <div class="card"><p>Bagara Rice with Chicken</p></div>
+      <div class="card"><p>Bagara Rice with Mutton</p></div>
+    </div>
+
+    <h3>Beverages</h3>
+    <div class="menu-grid">
+      <div class="card"><p>Mineral Water (1 Ltr)</p></div>
+      <div class="card"><p>Mineral Water (500 ml)</p></div>
+      <div class="card"><p>Soft Drinks</p></div>
     </div>
   </section>
 
+  <!-- About -->
   <section id="about">
     <h2>About Us</h2>
     <p>Kanha’s Grand is built on a passion for authentic Telangana flavors. We bring you a dining experience that blends traditional recipes with a modern touch, ensuring every visit is memorable.</p>
   </section>
 
+  <!-- Contact -->
   <section id="contact">
     <h2>Contact Us</h2>
     <p>Email: info@kanhasgrand.com</p>
     <p>Phone: +91 7730989898</p>
-    <p>Address: Mancherial, Telangana</p>
+    <p>Address: Kanha’s Grand, Mancherial, Telangana</p>
+
+    <div style="margin-top:20px; width:100%; max-width:700px;">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3809.422224636781!2d79.44314131502116!3d18.876956507598166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a32cb55bbe3f675%3A0x54e5f959d9f9ef88!2sKanha%E2%80%99s%20Grand!5e0!3m2!1sen!2sin!4v1694267890123!5m2!1sen!2sin"
+        width="100%"
+        height="300"
+        style="border:0; border-radius:12px;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+
+    <a href="https://www.google.com/maps/dir/?api=1&destination=Kanha's+Grand,+Mancherial,+Telangana" target="_blank" class="btn-map">Get Directions</a>
   </section>
 
+  <!-- Order -->
   <section id="order">
     <h2>Order on WhatsApp</h2>
     <p>Hungry? Place your order directly on WhatsApp and we’ll serve you the best Telangana food.</p>
     <a href="https://wa.me/917730989898?text=Hi%20Kanha's%20Grand!%20I%20want%20to%20place%20an%20order." class="btn-whatsapp">Order Now</a>
   </section>
 
+  <!-- Footer -->
   <footer>
     <div class="socials">
       <a href="https://www.instagram.com/kanhasgrand.official/" target="_blank"><i class="fab fa-instagram"></i></a>
